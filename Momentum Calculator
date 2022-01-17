@@ -1,0 +1,228 @@
+#include <iostream>
+#include <iostream>
+using namespace std; 
+
+int main() {
+  cout << "This program solves either mass or velocity of a system using the Conservation of Momentum." << endl; 
+  cout << "A menu will be displayed showing which variable you can solve for." << endl; 
+  cout << "Please keep in mind that this program assumes that there are no angles in this scenario." << endl; 
+  
+  //menu
+  cout << "---------------------------------------" << endl; cout << "Menu" << endl; 
+  cout << "1. Solve for mass" << endl; 
+  cout << "2. Solve for velocity" << endl; 
+  cout << "Please type a number corresponding to what you are trying to solve for." << endl;  
+  cout << "--------------------------------------" << endl; 
+ 
+ int userchoice;  
+ cin >> userchoice; 
+ 
+ //user chooses to solve for mass
+ if (userchoice == 1)
+ {cout << "Is the system elastic or inelastic?" << endl; 
+ cout  << "Type 1 for elastic and 2 for inelastic" << endl; 
+ int userchoice2;
+  cin >> userchoice2; 
+    
+    //user chooses to solve for mass in an elastic system
+    if (userchoice2 ==1)
+      {cout << "What is the known mass?" << endl; 
+      float elasticknownmass; 
+      cin >> elasticknownmass; 
+      cout << "What is the initial velocity of the known mass?" << endl; 
+      float elasticknownmassinitialvelocity; 
+      cin >> elasticknownmassinitialvelocity; 
+      cout << "What is the initial velocity of the unknown mass?" << endl; 
+      float elasticunknownmassinitialvelocity; 
+      cin >> elasticunknownmassinitialvelocity; 
+      cout << "What is the final velocity of the known mass?" << endl; 
+      float elasticknownfinalvelocity; 
+      cin >> elasticknownfinalvelocity; 
+      cout << "What is the final velocity of the unknown mass?" << endl; 
+      float elasticunknownfinalvelocity; 
+      cin >> elasticunknownfinalvelocity; 
+      float m1v1; 
+      m1v1= elasticknownmassinitialvelocity*elasticknownmass;
+      float m1v2; 
+      m1v2 = elasticknownmass * elasticknownfinalvelocity; 
+      float firstpartelastic; 
+      firstpartelastic = m1v1 - m1v2; 
+      float vivf; 
+      vivf = elasticunknownfinalvelocity - elasticunknownmassinitialvelocity; 
+      float unknownmass; 
+      unknownmass = firstpartelastic/vivf;  
+      cout << "The unknown mass is " << unknownmass << endl;
+      }
+    
+    //user chooses to solve for mass in an inelastic system
+    else if (userchoice2 == 2)
+    {
+      cout << "What is the known mass?" << endl; 
+      float inelasticknownmass; 
+      cin >> inelasticknownmass; 
+      cout << "What is the initial velocity of the known mass?" << endl; 
+      float inelasticknownmassinitialvelocity; 
+      cin >> inelasticknownmassinitialvelocity; 
+      cout << "What is the initial velocity of the unknown mass?" << endl; 
+      float inelasticunknownmassinitialvelocity; 
+      cin >> inelasticunknownmassinitialvelocity; 
+      cout << "What is the final velocity?" << endl; 
+      float inelasticknownfinalvelocity; 
+      cin >> inelasticknownfinalvelocity; 
+      float m1v1; 
+      m1v1 = inelasticknownmass * inelasticknownmassinitialvelocity; 
+      float m1v2 = inelasticknownmass * inelasticknownfinalvelocity; 
+      float firstpartinelastic; 
+      firstpartinelastic = m1v1-m1v2; 
+      float unknownmassinelasticvelocity; 
+      unknownmassinelasticvelocity = (inelasticknownfinalvelocity - inelasticunknownmassinitialvelocity); 
+      float inelasticunknownmass; 
+      inelasticunknownmass = firstpartinelastic / unknownmassinelasticvelocity; 
+      cout << "The unknown mass is " << inelasticunknownmass << endl; }
+
+    else 
+      {cout << "Invalid output"<< endl; 
+      exit(0);}
+ }
+  
+  //user chooses to solve for velocity 
+  else if (userchoice == 2)
+    {
+      cout << "Is the system elastic or inelastic?" << endl; 
+      cout << "Type 1 for elastic. Type 2 for inelastic." << endl; 
+      int userchoice2; 
+      cin >> userchoice2; 
+        
+        //user chooses to solve for velocity in an elastic system
+        if (userchoice2 == 1)
+        {
+        cout << "Are you solving for initial or final velocity?" << endl; 
+        cout << "Type 1 for initial. Type 2 for final." << endl; 
+        int userchoice3; 
+        cin >> userchoice3; 
+          
+          // user chooses to solve for  initial velocity in an elastic system 
+          if (userchoice3 == 1)
+            {
+              cout << "What is the first known mass?" << endl; 
+              cout << "Note: This will be the mass with the known velocity" << endl; 
+              float elasticmass1; 
+              cin >> elasticmass1; 
+              cout << "What is the second known mass?" << endl; 
+              float elasticmass2; 
+              cin >> elasticmass2; 
+              cout << "What is the first known mass's initial velocity?" << endl; 
+              float elasticmass1initialvelocity; 
+              cin >> elasticmass1initialvelocity; 
+              cout << "What is the first known mass's final velocity?" << endl; 
+              float elasticmass1finavelocity; 
+              cin >> elasticmass1finavelocity; 
+              cout << "What is the second known mass's final velocity?" << endl; 
+              float elasticmass2finalvelocity; 
+              cin >> elasticmass2finalvelocity; 
+              float leftside; 
+              leftside = (elasticmass1 * elasticmass1finavelocity) + (elasticmass2 * elasticmass1finavelocity); 
+              float rightside; 
+              rightside = elasticmass1 * elasticmass1initialvelocity; 
+              float initialvelocity; 
+              initialvelocity = (leftside - rightside) / elasticmass2;
+            }
+           
+
+           //user chooses to solve for final velocity in an elastic system
+           else if (userchoice3 == 2)
+            {
+            cout << "What is the first known mass?" << endl; 
+            cout << "Note: This will be the mass with the known velocity." << endl; 
+            float elasticmass1; 
+            cin >> elasticmass1; 
+            cout << "What is the second known mass?" << endl;
+            float elasticmass2; 
+            cin >> elasticmass2; 
+            cout << "What is the initial velocity of the first known mass?" << endl; 
+            float elasticinitialvelocitymass1; 
+            cin >> elasticinitialvelocitymass1; 
+            cout << "What is the final velocity of the first known mass?" << endl; 
+            float elasticfinalvelocitymass1; 
+            cin >> elasticfinalvelocitymass1; 
+            cout << "What is the initial velocity of the second known mass?" << endl; 
+            float elasticinitialvelocitymass2; 
+            cin >> elasticinitialvelocitymass2; 
+            float leftside; 
+            leftside = (elasticinitialvelocitymass1 *elasticmass1) +(elasticinitialvelocitymass2 * elasticmass2); 
+            float rightside; 
+            rightside = elasticfinalvelocitymass1 *elasticmass1; 
+            float finalvelocity; 
+            finalvelocity = (leftside - rightside) / elasticmass2; 
+            cout << "The final velocity is " << finalvelocity << endl; 
+          } else {
+            cout << "choice should match 1 or 2" << endl; 
+          }
+          
+        
+      }
+
+      //user chooses to solve for velocity in an inelastic system 
+      else if (userchoice2 == 2)
+      {
+      cout << "Are you solving for initial or final velocity?" << endl; 
+      cout << "Type 1 for initial. Type 2 for final." << endl; 
+      int userchoice3; 
+      cin >> userchoice3;
+
+        // user chooses to solve for initial velocity in an inelastic system 
+        if (userchoice3 == 1)
+          {
+          cout << "What is the first known mass?" << endl; 
+          cout << "Note: This will be the mass with the known velocity." << endl; 
+          float inelasticmass1; 
+          cin >> inelasticmass1; 
+          cout << "What is the second known mass?" << endl; 
+          float inelasticmass2; 
+          cin >> inelasticmass2; 
+          cout << "What is the initial velocity of the first known mass?" << endl; 
+          float inelasticinitialvelocitymass1; 
+          cin >> inelasticinitialvelocitymass1; 
+          cout << "What is the final velocity?" << endl; 
+          float inelasticfinalvelocity; 
+          cin >> inelasticfinalvelocity; 
+          float leftside; 
+          leftside = inelasticfinalvelocity * (inelasticmass1 + inelasticmass2); 
+          float rightside; 
+          rightside = inelasticmass1 * inelasticinitialvelocitymass1; 
+          float inelasticinitialvelocity; 
+          inelasticinitialvelocity = (leftside - rightside) / inelasticmass2; 
+          cout << "The initial velocity is " << inelasticinitialvelocity << endl; 
+          } 
+
+
+        // user chooses to solve for final velocity in an inelastic system
+        else if (userchoice3 == 2)
+          {
+          cout << "What is the first known mass?" << endl; 
+          cout << "Note: This will be the mass with the known velocity." << endl; 
+          float inelasticmass1; 
+          cin >> inelasticmass1; 
+          cout << "What is the second known mass?" << endl; 
+          float inelasticmass2; 
+          cin >> inelasticmass2; 
+          cout << "What is the final velocity of the first known mass?" << endl; 
+          float inelasticfinalvelocitymass1; 
+          cin >> inelasticfinalvelocitymass1; 
+          cout << "What is the initial velocity?" << endl; 
+          float inelasticinitialvelocity; 
+          cin >> inelasticinitialvelocity; 
+          float rightside; 
+          rightside = inelasticinitialvelocity * (inelasticmass1 + inelasticmass2); 
+          float leftside; 
+          leftside = inelasticmass1 * inelasticfinalvelocitymass1; 
+          float inelasticfinalvelocity; 
+          inelasticfinalvelocity = (rightside - leftside) / inelasticmass2; 
+          cout << "The final velocity is " << inelasticfinalvelocity << endl; 
+          } 
+      
+      }
+      
+  }
+
+}
